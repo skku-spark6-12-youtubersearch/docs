@@ -11,7 +11,8 @@ includes_dir: _includes
 layouts_dir: _layouts
 collections_dir: documents
 api_baseurl: "http://localhost:9000"
-theme: jekyll-theme-cayman
+theme: jekyll-hk-api-doc
+remote_theme: HeekangPark/jekyll-hk-api-doc
 
 plugins:
   - jekyll-redirect-from
