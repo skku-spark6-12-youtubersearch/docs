@@ -1,0 +1,32 @@
+title: Youtuber Search
+author: Heekang Park
+email: park.heekang33@gmail.com
+description: Backend API Book
+version: 1.0.0
+baseurl: "/docs"
+exclude: ["run", "commit", "README.md", "LICENSE", ".gitignore", "sync_html.py"]
+assets: /assets
+data_dir: _api
+includes_dir: _includes
+layouts_dir: _layouts
+collections_dir: documents
+api_baseurl: "http://localhost:9000"
+theme: jekyll-hk-api-doc
+
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
+collections:
+  api_book_page:
+    output: true
+    permalink: /:name
+
+defaults:
+  - scope:
+      path: ""
+      type: "api_book_page"
+    values:
+      layout: "api"

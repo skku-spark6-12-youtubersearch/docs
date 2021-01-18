@@ -1,0 +1,16 @@
+[
+    {
+        "list_name": "SubscriberNum",
+        "list_desc": "구독자 수가 가장 많은 채널",
+        "channels": [
+            {
+                "channel_id": "abcdefghijklmnopqrstuvwxyz",
+                "channel_title": "Awesome Youtube Channel",
+                "subscriber_num": {
+                    "value": 1930000,
+                    "date": "2021-01-15T20:11:09.000Z"
+                }
+            }, ...
+        ]
+    }, ...
+]

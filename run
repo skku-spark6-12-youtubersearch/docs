@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# sync yaml and html
+python sync_html.py
+
+server_name="API DOC Server"
+
+port=5000
+if [ -n "$1" ]; then # Use the port if user provide one
+    port=$1
+fi
+
+function kill_port() {
+    who=$1
+    port=$2
+
+    pid=$(netstat -tnlp 2>/dev/null | grep ":$port" | awk -F'LISTEN *|/' '/^(tcp|udp)/{print $2}')
+    if [ -n "$pid" ]
+    then
+        kill $pid
+        echo $who : Process $pid killed
+    fi
+    unset pid
+}
+
+function kill_all() {
+    kill_port "$server_name" "$port"
+}
+
+trap "kill_all; exit" SIGHUP SIGINT SIGTERM
+
+# check if someone is running the server
+is_using=$(netstat -ntlp 2> /dev/null | grep ":$port")
+if [ -n "$is_using" ]; then
+    echo "Someone is already running "$server_name
+    while true; do
+        read -p "Do you want to force quit it? (y/n)" yn
+        case $yn in
+            [Yy]* ) kill_all; break;;
+            [Nn]* ) exit;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
+fi
+unset is_using
+unset yn
+
+kill_all
+bundle exec jekyll serve --port "$port" --safe

@@ -1,0 +1,34 @@
+name: Summary
+description: API for summary
+base_url: 
+apis:
+  - name: Summary
+    url: /summary
+    method: get
+    description: 요약 정보(summary)를 json 형식으로 반환한다.
+    params:
+    response:
+      success:
+        - status_code: 200
+          example: summary-summary-200
+          description: |
+            - <code>list_name</code>: 목록 이름
+            - <code>list_desc</code>: 목록 설명
+            - <code>list_name</code>: 채널 목록. 10개의 원소를 가진 JSON Array.
+                - <code>channel_id</code>: 채널 ID
+                - <code>channel_title</code>: 채널 이름
+                - <code>channel_photo</code>: 채널 사진
+                - <code>subscriber_num</code>
+                    - <code>value</code>: 구독자 수
+                    - <code>date</code>: 구독자 수 수집일
+                - <code>video_num</code>
+                    - <code>value</code>: 동영상 수
+                    - <code>date</code>: 동영상 수 수집일
+                - <code>view_num</code>
+                    - <code>value</code>: 채널 조회수
+                    - <code>date</code>: 채널 조회수 수집일
+            
+            <p>* <code>channel_photo</code>는 base64 String의 형태로 전송된다. 현재는 테스트용 더미 이미지를 전송한다(추후 업데이트 예정).</p>
+      fail:
+        - status_code: 400
+          description: 무언가 오류가 발생한 경우. 관리자에게 보고해야 한다.
