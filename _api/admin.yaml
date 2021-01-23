@@ -190,11 +190,11 @@ apis:
         - name: published_date
           is_required: false
           type: Date (String in ISO8601 Format)
-          description: 
-        - name: videos`: [Array] 동영상
-          is_required: false
-          type: String
           description: 채널 개설일
+        - name: videos
+          is_required: false
+          type: Array
+          description: 동영상
         - name: subscriber_num
           is_required: false
           type: Array
