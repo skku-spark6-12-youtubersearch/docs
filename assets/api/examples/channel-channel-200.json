@@ -1,0 +1,97 @@
+{
+    "id": "a1b2c3d4e5f6_g7",
+    "title": "Awesome Youtube Channel",
+    "desc": "Hi! This is an awesome youtube channel!",
+    "categories": [
+        "Action_game",
+        "Role-playing_video_game",
+        "Video_game_culture",
+        ...
+    ],
+    "tags": [
+        "Minecraft",
+        "Among Us",
+        ...
+    ],
+    "recent_video_ids": [
+        "x1y2z3w4",
+        "x9y8z7w6",
+        ...
+    ],
+    "popular_video_ids": [
+        "c1m2y3k4",
+        "c9m8y7k6",
+        ...
+    ],
+    "upload_playlist_id": "a9b8c7d6...",
+    "country": "KR",
+    "trailer_video_id": "ab1cd2ef3",
+    "default_language": "",
+    "published_date": "2014-01-12 11:29:30+09:00",
+    "videos": [
+        {
+            "id": "x1y2z3w4",
+            "title": "Awesome Video",
+            "published_date": "2020-03-07 04:46:27+09:00",
+            "categories": [
+                "Action_game",
+                "Role-playing_video_game",
+                "Video_game_culture",
+                ...
+            ],
+            "tags": [
+                "Minecraft",
+                "Minecraft Animation",
+                ...
+            ],
+            "like_num": [
+                {
+                    "date": "2021-01-20 15:24:03+09:00",
+                    "value": 356
+                }, ...
+            ],
+            "dislike_num": [
+                {
+                    "date": "2021-01-20 15:24:03+09:00",
+                    "value": 25
+                }, ...
+            ],
+            "comment_num": [
+                {
+                    "date": "2021-01-20 15:24:03+09:00",
+                    "value": 20
+                }, ...
+            ],
+            "view_num": [
+                {
+                    "date": "2021-01-20 15:24:03+09:00",
+                    "value": 1542
+                }, ...
+            ]
+        }, ...
+    ],
+    "subscriber_num": [
+        {
+            "date": "2021-01-20 15:24:03+09:00",
+            "value": 456
+        }, ...
+    ],
+    "video_num": [
+        {
+            "date": "2021-01-20 15:24:03+09:00",
+            "value": 78
+        }, ...
+    ],
+    "view_num": [
+        {
+            "date": "2021-01-20 15:24:03+09:00",
+            "value": 3521
+        }, ...
+    ],
+    "namuwikis": [
+        {
+            "title": "Awesome Channel (유투버)",
+            "content": "Awesome Channel은 2014년 01월 12일에 만들어진 유투브 채널이다. 이 채널은 ..."
+        }, ...
+    ]
+}

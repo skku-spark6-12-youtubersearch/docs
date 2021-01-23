@@ -1,0 +1,67 @@
+name: Channel
+description: API for channel
+base_url: 
+apis:
+  - name: Get Channel Info
+    url: /channel
+    method: get
+    description: 채널 정보를 json 형식으로 반환한다.
+    params:
+      path:
+        - name: id
+          is_required: true
+          type: String
+          description: 채널 id
+    response:
+      success:
+        - status_code: 200
+          example: channel-channel-200
+          description: |
+            - `id`: [String] 채널 ID
+            - `title`: [String] 채널명
+            - `desc`: [String] 채널 설명
+            - `categories`: [Array (of String)] 채널 카테고리
+            - `tags`: [Array (of String)] 채널 태그
+            - `recent_video_ids`: [Array (of String)] 최근 동영상들의 ID
+            - `popular_video_ids`: [Array (of String)] 인기 동영상들의 ID
+            - `upload_playlist_id`: [String] upload_playlist_id
+            - `country`: [String] 채널 국적
+            - `trailer_video_id`: [String] 트레일러 동영상 ID
+            - `default_language`: [String] 채널 기본 언어
+            - `published_date`: [Date (String in ISO8601 Format)] 채널 개설일
+            - `videos`: [Array] 동영상
+                - `id`: [String] 동영상 ID
+                - `title`: [String] 동영상 제목
+                - `desc`: [String] 동영상 설명
+                - `published_date`: [Date (String in ISO8601 Format)] 동영상 공개일
+                - `categories`: [Array (of String)] 동영상 카테고리
+                - `tags`: [Array (of String)] 동영상 태그
+                - `like_num`: [Array] 좋아요 수
+                    - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                    - `value`: [Number] 값
+                - `dislike_num`: [Array] 싫어요 수
+                    - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                    - `value`: [Number] 값
+                - `comment_num`: [Array] 댓글 수
+                    - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                    - `value`: [Number] 값
+                - `view_num`: [Array] 조회수
+                    - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                    - `value`: [Number] 값
+            - `subscriber_num`: [Array] 구독자 수
+                - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                - `value`: [Number] 값
+            - `video_num`: [Array] 동영상 수
+                - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                - `value`: [Number] 값
+            - `view_num`: [Array] 채널 조회수
+                - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                - `value`: [Number] 값
+            - `namuwikis`: [Array] 나무위키 문서 모음
+                - `title`: [String] 문서 제목
+                - `content`: [String] 문서 본문
+      fail:
+        - status_code: 400
+          description: 채널 정보 불러오기 실패 (백엔드 서버 로그 참조)
+        - status_code: 404
+          description: 유효하지 않은 `id`(채널 ID)를 사용한 경우

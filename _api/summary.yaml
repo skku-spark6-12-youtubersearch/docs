@@ -31,4 +31,4 @@ apis:
             <p>* <code>channel_photo</code>는 base64 String의 형태로 전송된다. 현재는 테스트용 더미 이미지를 전송한다(추후 업데이트 예정).</p>
       fail:
         - status_code: 400
-          description: 무언가 오류가 발생한 경우. 관리자에게 보고해야 한다.
+          description: 백엔드 서버 로그 참조

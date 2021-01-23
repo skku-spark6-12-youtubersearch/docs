@@ -1,0 +1,226 @@
+name: Admin
+description: API for DB Management
+base_url: /admin
+apis:
+  - name: Set DB
+    url: /channels
+    method: post
+    description: |
+      DB를 입력된 json으로 업데이트한다.
+
+      - `channels`: [Array] 채널 정보
+          - `id`: [String] 채널 ID
+          - `title`: [String] 채널명
+          - `desc`: [String] 채널 설명
+          - `categories`: [Array (of String)] 채널 카테고리
+          - `tags`: [Array (of String)] 채널 태그
+          - `recent_video_ids`: [Array (of String)] 최근 동영상들의 ID
+          - `popular_video_ids`: [Array (of String)] 인기 동영상들의 ID
+          - `upload_playlist_id`: [String] upload_playlist_id
+          - `country`: [String] 채널 국적
+          - `trailer_video_id`: [String] 트레일러 동영상 ID
+          - `default_language`: [String] 채널 기본 언어
+          - `published_date`: [Date (String in ISO8601 Format)] 채널 개설일
+          - `videos`: [Array] 동영상
+              - `id`: [String] 동영상 ID
+              - `title`: [String] 동영상 제목
+              - `desc`: [String] 동영상 설명
+              - `published_date`: [Date (String in ISO8601 Format)] 동영상 공개일
+              - `categories`: [Array (of String)] 동영상 카테고리
+              - `tags`: [Array (of String)] 동영상 태그
+              - `like_num`: [Array] 좋아요 수
+                  - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                  - `value`: [Number] 값
+              - `dislike_num`: [Array] 싫어요 수
+                  - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                  - `value`: [Number] 값
+              - `comment_num`: [Array] 댓글 수
+                  - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                  - `value`: [Number] 값
+              - `view_num`: [Array] 조회수
+                  - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+                  - `value`: [Number] 값
+          - `subscriber_num`: [Array] 구독자 수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `video_num`: [Array] 동영상 수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `view_num`: [Array] 채널 조회수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `namuwikis`: [Array] 나무위키 문서 모음
+              - `title`: [String] 문서 제목
+              - `content`: [String] 문서 본문
+
+      **주의!** 이 API를 호출하면 DB 전체가 덮어씌워지므로 주의해서 사용하자.
+    params:
+      header:
+        - name: x-access-token
+          is_required: true
+          type: String
+          description: 비밀번호 (관리자에게 문의)
+      body:
+        - name: channels
+          is_required: true
+          type: JSON Array
+          description: 채널 정보. 반드시 포멧에 맞춰서 입력해야 한다.
+    response:
+      success:
+        - status_code: 200
+          example: channel-channel-200
+          description: DB 업데이트 성공
+      fail:
+        - status_code: 400
+          description: DB 업데이트 실패 (백엔드 서버 로그 참조)
+        - status_code: 403
+          description: 유효하지 않은 `x-access-code`를 사용한 경우
+  - name: Update Channel
+    url: /channel
+    method: post
+    description: |
+      특정 채널의 정보를 업데이트한다.
+
+      - `id`: [String] 채널 ID
+      - `title`: [String] 채널명
+      - `desc`: [String] 채널 설명
+      - `categories`: [Array (of String)] 채널 카테고리
+      - `tags`: [Array (of String)] 채널 태그
+      - `recent_video_ids`: [Array (of String)] 최근 동영상들의 ID
+      - `popular_video_ids`: [Array (of String)] 인기 동영상들의 ID
+      - `upload_playlist_id`: [String] upload_playlist_id
+      - `country`: [String] 채널 국적
+      - `trailer_video_id`: [String] 트레일러 동영상 ID
+      - `default_language`: [String] 채널 기본 언어
+      - `published_date`: [Date (String in ISO8601 Format)] 채널 개설일
+      - `videos`: [Array] 동영상
+          - `id`: [String] 동영상 ID
+          - `title`: [String] 동영상 제목
+          - `desc`: [String] 동영상 설명
+          - `published_date`: [Date (String in ISO8601 Format)] 동영상 공개일
+          - `categories`: [Array (of String)] 동영상 카테고리
+          - `tags`: [Array (of String)] 동영상 태그
+          - `like_num`: [Array] 좋아요 수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `dislike_num`: [Array] 싫어요 수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `comment_num`: [Array] 댓글 수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+          - `view_num`: [Array] 조회수
+              - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+              - `value`: [Number] 값
+      - `subscriber_num`: [Array] 구독자 수
+          - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+          - `value`: [Number] 값
+      - `video_num`: [Array] 동영상 수
+          - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+          - `value`: [Number] 값
+      - `view_num`: [Array] 채널 조회수
+          - `date`: [Date (String in ISO8601 Format)] 수집 날짜
+          - `value`: [Number] 값
+      - `namuwikis`: [Array] 나무위키 문서 모음
+          - `title`: [String] 문서 제목
+          - `content`: [String] 문서 본문
+
+      **주의!** `overwrite` 모드로 이 API를 호출하면 해당 채널의 내용이 덮어씌워지므로 주의해서 사용하자.
+    params:
+      header:
+        - name: x-access-token
+          is_required: true
+          type: String
+          description: 비밀번호 (관리자에게 문의)
+      path:
+        - name: id
+          is_required: true
+          type: String
+          description: 채널 ID
+      query:
+        - name: overwrite
+          is_required: false
+          type: Boolean
+          description: Overwrite 모드 설정. `true`를 주면 overwrite 모드가 켜지고, 아무 값도 주지 않거나 `false`를 사용하면 overwrite 모드가 꺼진다.
+      body:
+        - name: channel
+          is_required: true
+          type: JSON Array
+          description: 채널 정보. 반드시 포멧에 맞춰서 입력해야 한다.
+        - name: title
+          is_required: false
+          type: String
+          description: 채널명
+        - name: desc
+          is_required: false
+          type: String
+          description: 채널 설명
+        - name: categories
+          is_required: false
+          type: Array (of String)
+          description: 채널 카테고리
+        - name: tags
+          is_required: false
+          type: Array (of String)
+          description: 채널 태그
+        - name: recent_video_ids
+          is_required: false
+          type: Array (of String)
+          description: 최근 동영상들의 ID
+        - name: popular_video_ids
+          is_required: false
+          type: Array (of String)
+          description: 인기 동영상들의 ID
+        - name: upload_playlist_id
+          is_required: false
+          type: String
+          description: upload_playlist_id
+        - name: country
+          is_required: false
+          type: String
+          description: 채널 국적
+        - name: trailer_video_id
+          is_required: false
+          type: String
+          description: 트레일러 동영상 ID
+        - name: default_language
+          is_required: false
+          type: String
+          description: 채널 기본 언어
+        - name: published_date
+          is_required: false
+          type: Date (String in ISO8601 Format)
+          description: 
+        - name: videos`: [Array] 동영상
+          is_required: false
+          type: String
+          description: 채널 개설일
+        - name: subscriber_num
+          is_required: false
+          type: Array
+          description: 구독자 수
+        - name: video_num
+          is_required: false
+          type: Array
+          description: 동영상 수
+        - name: view_num
+          is_required: false
+          type: Array
+          description: 채널 조회수
+        - name: namuwikis
+          is_required: false
+          type: Array
+          description: 나무위키 문서 모음
+    response:
+      success:
+        - status_code: 200
+          example: channel-channel-200
+          description: DB 업데이트 성공. DB에 적용된 값이 반환된다.
+      fail:
+        - status_code: 400
+          description: DB 업데이트 실패 (백엔드 서버 로그 참조)
+        - status_code: 403
+          description: 유효하지 않은 `x-access-code`를 사용한 경우
+        - status_code: 404
+          description: 유효하지 않은 `id`(채널 ID)를 사용한 경우
+            
