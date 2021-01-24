@@ -143,10 +143,6 @@ apis:
           type: Boolean
           description: Overwrite 모드 설정. `true`를 주면 overwrite 모드가 켜지고, 아무 값도 주지 않거나 `false`를 사용하면 overwrite 모드가 꺼진다.
       body:
-        - name: channel
-          is_required: true
-          type: JSON Array
-          description: 채널 정보. 반드시 포멧에 맞춰서 입력해야 한다.
         - name: title
           is_required: false
           type: String
